@@ -2,20 +2,24 @@
 
 // Enqueue scripts and styles for the frontend
 function aap_enqueue_scripts() {
-    // Enqueue a placeholder stylesheet for the playlist.
+    // Enqueue the stylesheet with cache-busting.
+    $css_file_path = AAP_PLUGIN_PATH . 'css/playlist.css';
+    $css_version = file_exists($css_file_path) ? filemtime($css_file_path) : '1.0';
     wp_enqueue_style(
         'aap-playlist-style',
         AAP_PLUGIN_URL . 'css/playlist.css',
         array(),
-        '1.0'
+        $css_version
     );
 
-    // Enqueue the JavaScript for the playlist filtering.
+    // Enqueue the JavaScript with cache-busting.
+    $js_file_path = AAP_PLUGIN_PATH . 'js/playlist.js';
+    $js_version = file_exists($js_file_path) ? filemtime($js_file_path) : '1.0';
     wp_enqueue_script(
         'aap-playlist-script',
         AAP_PLUGIN_URL . 'js/playlist.js',
         array( 'jquery' ),
-        '1.0',
+        $js_version,
         true
     );
 
