@@ -64,6 +64,17 @@ jQuery(document).ready(function($) {
             });
             // Update trackElements to only include visible tracks for next/prev functionality
             trackElements = container.find('.aap-track-icon:visible');
+
+            // Auto-play the first visible track, if any
+            if (trackElements.length > 0) {
+                // Use .first() to get the jQuery object of the first element and trigger a click
+                trackElements.first().trigger('click');
+            } else {
+                // If no tracks match, pause the player and reset info
+                pauseTrack();
+                trackTitleEl.text('No matching tracks');
+                trackAttributesEl.html('');
+            }
         });
 
 

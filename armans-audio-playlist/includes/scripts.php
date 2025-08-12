@@ -2,15 +2,8 @@
 
 // Enqueue scripts and styles for the frontend
 function aap_enqueue_scripts() {
-    // Enqueue the stylesheet with cache-busting.
-    $css_file_path = AAP_PLUGIN_PATH . 'css/playlist.css';
-    $css_version = file_exists($css_file_path) ? filemtime($css_file_path) : '1.0';
-    wp_enqueue_style(
-        'aap-playlist-style',
-        AAP_PLUGIN_URL . 'css/playlist.css',
-        array(),
-        $css_version
-    );
+    // The cache-busting via filemtime didn't work for the user, so we will now print styles inline.
+    // The wp_enqueue_style call has been removed.
 
     // Enqueue the JavaScript with cache-busting.
     $js_file_path = AAP_PLUGIN_PATH . 'js/playlist.js';
@@ -30,6 +23,17 @@ function aap_enqueue_scripts() {
     ) );
 }
 add_action( 'wp_enqueue_scripts', 'aap_enqueue_scripts' );
+
+// Print styles inline to avoid caching issues.
+function aap_print_inline_styles() {
+    $css_file_path = AAP_PLUGIN_PATH . 'css/playlist.css';
+    if ( file_exists( $css_file_path ) ) {
+        echo '<style type="text/css">';
+        readfile( $css_file_path );
+        echo '</style>';
+    }
+}
+add_action( 'wp_head', 'aap_print_inline_styles' );
 
 
 // Helper function to get all unique attribute values across all playlists
