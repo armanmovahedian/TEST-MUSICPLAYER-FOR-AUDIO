@@ -94,8 +94,12 @@ jQuery(document).ready(function($) {
             attributesHTML += `<span class="aap-attr-item"><b>Amp:</b> ${track.data('amp')}</span>`;
             trackAttributesEl.html(attributesHTML);
 
-            container.find('.aap-track-icon.active').removeClass('active');
-            track.addClass('active');
+            // Reset style of all icons to default
+            trackElements.each(function() {
+                $(this).attr('style', $(this).data('style-default'));
+            });
+            // Set the active track's style
+            track.attr('style', track.data('style-active'));
             currentTrackIndex = trackIndex;
             playTrack();
         }

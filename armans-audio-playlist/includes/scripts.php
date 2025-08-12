@@ -24,17 +24,6 @@ function aap_enqueue_scripts() {
 }
 add_action( 'wp_enqueue_scripts', 'aap_enqueue_scripts' );
 
-// Print styles inline to avoid caching issues.
-function aap_print_inline_styles() {
-    $css_file_path = AAP_PLUGIN_PATH . 'css/playlist.css';
-    if ( file_exists( $css_file_path ) ) {
-        echo '<style type="text/css">';
-        readfile( $css_file_path );
-        echo '</style>';
-    }
-}
-add_action( 'wp_head', 'aap_print_inline_styles' );
-
 
 // Helper function to get all unique attribute values across all playlists
 function aap_get_unique_attributes_for_playlists() {
