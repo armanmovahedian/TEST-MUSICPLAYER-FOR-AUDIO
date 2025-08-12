@@ -57,8 +57,9 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #f0f0f0;
-    border: 1px solid #ddd;
+    background-color: #2a5b2c; /* Brand Color */
+    color: #FFFFFF;
+    border: 1px solid #3a7d3c;
     border-radius: 50%;
     cursor: pointer;
     font-weight: bold;
@@ -66,14 +67,14 @@
 }
 
 .aap-track-icon:hover {
-    background-color: #e0e0e0;
+    opacity: 0.8;
     transform: scale(1.1);
 }
 
 .aap-track-icon.active {
-    background-color: #2a5b2c; /* Brand Color */
+    background-color: #e74c3c; /* Red for active */
     color: #fff;
-    border-color: #3a7d3c;
+    border-color: #c0392b;
 }
 
 /* Main Player UI */
@@ -105,13 +106,16 @@
     font-size: 0.9em;
     color: #bdc3c7;
     opacity: 0.8;
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5px 15px; /* Row and column gap */
 }
 
 .aap-track-attributes .aap-attr-item {
     display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .aap-progress-container {
@@ -158,8 +162,8 @@
 
 .aap-controls .aap-play-pause-btn {
     font-size: 32px;
-    background-color: #2a5b2c; /* Brand Color */
-    color: #FFFFFF;
+    background-color: #FFFFFF; /* White background */
+    color: #000000; /* Black icon */
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -185,7 +189,7 @@
     -webkit-appearance: none;
     width: 100px;
     height: 4px;
-    background: #203d36; /* Lighter Dark Green */
+    background: #FFFFFF; /* White track */
     outline: none;
     border-radius: 2px;
 }
@@ -208,5 +212,12 @@
     }
     .aap-volume-container {
         justify-content: center;
+    }
+    .aap-filters {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .aap-filters select.aap-filter {
+        flex-basis: calc(50% - 8px); /* 2 columns minus gap */
     }
 }
