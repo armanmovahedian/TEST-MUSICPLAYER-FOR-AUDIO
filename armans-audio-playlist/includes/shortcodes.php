@@ -77,13 +77,10 @@ function aap_shortcode_callback( $atts ) {
 
                 <!-- Main Player UI -->
                 <div class="aap-player">
-                    <div class="aap-player-album-art">
-                        <i class="dashicons dashicons-format-audio"></i>
-                    </div>
                     <div class="aap-player-body">
                         <div class="aap-track-info">
                             <h4 class="aap-track-title">Select a track</h4>
-                            <p class="aap-track-attributes"></p>
+                            <div class="aap-track-attributes"></div>
                         </div>
 
                         <div class="aap-progress-container">
