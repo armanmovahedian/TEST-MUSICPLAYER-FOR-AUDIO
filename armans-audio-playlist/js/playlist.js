@@ -76,8 +76,12 @@ jQuery(document).ready(function($) {
             audioPlayer.src = track.data('audio-src');
             trackTitleEl.text(track.data('title'));
 
-            const attributes = `Style: ${track.data('style')} | Mic: ${track.data('microphone')} | FX: ${track.data('effects')} | Amp: ${track.data('amp')}`;
-            trackAttributesEl.text(attributes);
+            let attributesHTML = '';
+            attributesHTML += `<span class="aap-attr-item"><b>Style:</b> ${track.data('style')}</span>`;
+            attributesHTML += `<span class="aap-attr-item"><b>Mic:</b> ${track.data('microphone')}</span>`;
+            attributesHTML += `<span class="aap-attr-item"><b>Effects:</b> ${track.data('effects')}</span>`;
+            attributesHTML += `<span class="aap-attr-item"><b>Amp:</b> ${track.data('amp')}</span>`;
+            trackAttributesEl.html(attributesHTML);
 
             container.find('.aap-track-icon.active').removeClass('active');
             track.addClass('active');
